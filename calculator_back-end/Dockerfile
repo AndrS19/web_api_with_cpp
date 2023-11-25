@@ -14,15 +14,8 @@ RUN apt-get update && \
 # Встановлення ASIO
 RUN apt-get update && apt-get install -y libasio-dev
 
-# Встановлення restbed
-RUN git clone https://github.com/Corvusoft/restbed.git \
-    && cd restbed \
-    && git checkout $(git describe --tags `git rev-list --tags --max-count=1`) \
-    && mkdir build \
-    && cd build \
-    && cmake -DBUILD_SSL=NO -DBUILD_TESTS=NO -DASIO_INCLUDE_DIR=/usr/include .. \
-    && make install \
-    && cd ../..
+# Встановлення бібліотеки restbed
+RUN apt-get update && apt-get install -y librestbed-dev
 
 # Виконуються необхідні кроки для збірки проекту
 RUN cmake -H. -Bbuild && cmake --build build --config Release --target all
