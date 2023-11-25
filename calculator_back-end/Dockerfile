@@ -19,11 +19,9 @@ RUN wget http://mirrors.kernel.org/ubuntu/pool/universe/r/restbed/librestbed-dev
     && wget http://mirrors.kernel.org/ubuntu/pool/universe/r/restbed/librestbed0_4.0~dfsg1-5build2_amd64.deb
 
 # Встановіть завантажені пакети
-RUN dpkg -i librestbed-dev_4.0~dfsg1-5build2_amd64.deb \
-    && dpkg -i librestbed0_4.0~dfsg1-5build2_amd64.deb
-
-# Встановіть будь-які відсутні залежності
-RUN apt-get install -f
+RUN dpkg -i librestbed0_4.0~dfsg1-5build2_amd64.deb && \
+    dpkg -i librestbed-dev_4.0~dfsg1-5build2_amd64.deb && \
+    apt-get install -f
 
 # Виконуються необхідні кроки для збірки проекту
 RUN cmake -H. -Bbuild && cmake --build build --config Release --target all
