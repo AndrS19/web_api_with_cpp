@@ -22,10 +22,9 @@ RUN git clone https://github.com/Corvusoft/restbed.git \
     && cd build \
     && cmake -DBUILD_SSL=NO -DBUILD_TESTS=NO -DASIO_INCLUDE_DIR=/usr/include .. \
     && make install \
-    && cd ../.. \
-    && rm -rf restbed
+    && cd ../..
 
-# Виконує необхідні кроки для збірки проекту
+# Виконуються необхідні кроки для збірки проекту
 RUN cmake -H. -Bbuild && cmake --build build --config Release --target all
 
 # Команда, яка виконається при старті контейнера
