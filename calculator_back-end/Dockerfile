@@ -7,6 +7,10 @@ WORKDIR /usr/src/app
 # Копіює вміст поточної директорії (де знаходиться Dockerfile) в контейнер
 COPY . .
 
+# Встановлює CMake
+RUN apt-get update && \
+    apt-get install -y cmake
+
 # Виконуй необхідні кроки для збірки проекту
 RUN cmake -Hcalculator_back-end -Bcalculator_back-end/build
 RUN cmake --build calculator_back-end/build --config Release --target all
