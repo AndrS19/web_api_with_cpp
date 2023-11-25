@@ -25,9 +25,8 @@ RUN git clone https://github.com/Corvusoft/restbed.git \
     && cd ../.. \
     && rm -rf restbed
 
-# Виконуй необхідні кроки для збірки проекту
-RUN cmake -H. -Bbuild
-RUN cmake --build build --config Release --target all
+# Виконує необхідні кроки для збірки проекту
+RUN cmake -H. -Bbuild && cmake --build build --config Release --target all
 
 # Команда, яка виконається при старті контейнера
 CMD ["./build/CalculatorAPI"]
