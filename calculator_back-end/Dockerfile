@@ -17,13 +17,14 @@ RUN apt-get update && apt-get install -y libasio-dev
 # Встановлення restbed
 RUN git clone https://github.com/Corvusoft/restbed.git \
     && cd restbed \
-    && git checkout tags/4.7 \
+    && git checkout $(git describe --tags `git rev-list --tags --max-count=1`) \
     && mkdir build \
     && cd build \
     && cmake -DBUILD_SSL=NO -DBUILD_TESTS=NO .. \
     && make install \
     && cd ../.. \
     && rm -rf restbed
+
 
 # Виконуй необхідні кроки для збірки проекту
 RUN cmake -H. -Bbuild
