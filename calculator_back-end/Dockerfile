@@ -12,8 +12,8 @@ RUN apt-get update && \
     apt-get install -y cmake
 
 # Виконуй необхідні кроки для збірки проекту
-RUN cmake -Hcalculator_back-end -Bcalculator_back-end/build
-RUN cmake --build calculator_back-end/build --config Release --target all
+RUN cmake -H. -Bbuild
+RUN cmake --build build --config Release --target all
 
 # Команда, яка виконається при старті контейнера
-CMD ["./calculator_back-end/build/CalculatorAPI"]
+CMD ["./build/CalculatorAPI"]
