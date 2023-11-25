@@ -20,11 +20,10 @@ RUN git clone https://github.com/Corvusoft/restbed.git \
     && git checkout $(git describe --tags `git rev-list --tags --max-count=1`) \
     && mkdir build \
     && cd build \
-    && cmake -DBUILD_SSL=NO -DBUILD_TESTS=NO .. \
+    && cmake -DBUILD_SSL=NO -DBUILD_TESTS=NO -DASIO_INCLUDE_DIR=/usr/include .. \
     && make install \
     && cd ../.. \
     && rm -rf restbed
-
 
 # Виконуй необхідні кроки для збірки проекту
 RUN cmake -H. -Bbuild
