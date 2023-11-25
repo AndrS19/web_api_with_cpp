@@ -11,6 +11,9 @@ COPY . .
 RUN apt-get update && \
     apt-get install -y cmake
 
+# Встановлення ASIO
+RUN apt-get update && apt-get install -y libasio-dev
+
 # Встановлення restbed
 RUN git clone https://github.com/Corvusoft/restbed.git \
     && cd restbed \
