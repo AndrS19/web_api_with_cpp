@@ -1,0 +1,15 @@
+# Використовує офіційний образ C++ від Docker Hub
+FROM gcc:latest
+
+# Встановлює робочу директорію в контейнері
+WORKDIR /usr/src/app
+
+# Копіює вміст поточної директорії (де знаходиться Dockerfile) в контейнер
+COPY . .
+
+# Виконуй необхідні кроки для збірки проекту
+RUN cmake -Hcalculator_back-end -Bcalculator_back-end/build
+RUN cmake --build calculator_back-end/build --config Release --target all
+
+# Команда, яка виконається при старті контейнера
+CMD ["./calculator_back-end/build/CalculatorAPI"]
