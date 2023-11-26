@@ -1,5 +1,5 @@
 # Етап 1: Використовуємо офіційний образ Node.js для збірки фронтенду
-FROM node:latest AS builder
+FROM node:20.10.0 AS builder
 
 # Встановлюємо робочу директорію в контейнері
 WORKDIR /app
