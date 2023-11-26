@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Встановлюємо залежності
-RUN npm ci
+RUN npm install
 
 # Копіюємо вміст поточної директорії (де знаходиться Dockerfile) в контейнер
 COPY . .
