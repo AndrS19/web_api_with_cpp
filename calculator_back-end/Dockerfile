@@ -25,5 +25,7 @@ RUN dpkg -i libssl1.1_1.1.0g-2ubuntu4_amd64.deb && \
 # Виконуються необхідні кроки для збірки проекту
 RUN cmake -H. -Bbuild && cmake --build build --config Release --target all
 
+EXPOSE 8000
+
 # Команда, яка виконається при старті контейнера
 CMD ["./build/CalculatorAPI"]
